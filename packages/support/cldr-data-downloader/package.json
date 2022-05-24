@@ -1,0 +1,58 @@
+{
+  "name": "cldr-data-downloader",
+  "version": "0.3.5-0",
+  "engines": {
+    "node": ">= 12"
+  },
+  "private": true,
+  "keywords": [
+    "unicode",
+    "CLDR",
+    "JSON",
+    "data",
+    "install",
+    "download",
+    "fetch"
+  ],
+  "description": "Download tool for Unicode CLDR JSON data",
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "author": {
+    "name": "Rafael Xavier de Souza",
+    "email": "rxaviers@gmail.com",
+    "url": "http://rafael.xavier.blog.br"
+  },
+  "contributors": [
+    "Microsoft Corporation"
+  ],
+  "module": "src/index.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js"
+    }
+  },
+  "type": "module",
+  "bin": {
+    "cldr-data-downloader": "./bin/download.sh"
+  },
+  "scripts": {
+    "bump": "npm run bump:prod && npm run bump:dev",
+    "bump:dev": "npm install $(cat package.json | jq -r '(.devDependencies | keys) - .skipBump | .[]' | awk '{print $1 \"@latest\"}')",
+    "bump:prod": "npm install $(cat package.json | jq -r '(.dependencies | keys) - .skipBump | .[]' | awk '{print $1 \"@latest\"}')",
+    "eslint": "npm run precommit",
+    "precommit": "npm run precommit:eslint -- src",
+    "precommit:eslint": "node ../../../node_modules/eslint/bin/eslint.js --report-unused-disable-directives --max-warnings 0"
+  },
+  "skipBump": [],
+  "dependencies": {
+    "adm-zip": "^0.5.9",
+    "nopt": "^5.0.0",
+    "progress": "^2.0.3",
+    "q": "^1.5.1",
+    "request": "^2.88.2",
+    "request-progress": "^3.0.0"
+  }
+}

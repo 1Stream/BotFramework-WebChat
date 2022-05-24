@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/cdbb686a-1ac9-445c-aa6b-ab4f25764c8b/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/media24-dev-bot-ui",
+    "appService.deploySubpath": "."
+}
